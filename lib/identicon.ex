@@ -19,10 +19,9 @@ defmodule Identicon do
     Picks the first 3 numbers from the list of representation
     of the md5 binary hash. These are the RGB.
   """
-  def pick_color image do
+  def pick_color %Image{hex: [r, g, b | _tail ]} = image do
     # Is not pattern matching and equational reasoning lovely, delicious?
-    %Image{hex: [r, g, b | _tail ]} = image
-    [r, g, b]
+    %Image{image | color: {r, g, b}}
   end
 
   @doc """
