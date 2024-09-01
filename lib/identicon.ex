@@ -13,6 +13,17 @@ defmodule Identicon do
     input
     |> hash_input
     |> pick_color
+    |> build_grid
+  end
+
+  def build_grid %Image{hex: hex} do
+    hex
+    |> Enum.chunk_every(3, 3, :discard)
+    |> Enum.map(&mirror_row/1)
+  end
+
+  def mirror_row [fst, snd | _tail] = row do
+    row ++ [snd, fst]
   end
 
   @doc """
