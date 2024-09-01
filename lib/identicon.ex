@@ -7,8 +7,8 @@ defmodule Identicon do
   alias Identicon.Image
 
   @doc """
+    Main entry point to the program.
   """
-
   def main(input) do
     input
     |> hash_input
@@ -86,6 +86,9 @@ defmodule Identicon do
     %Identicon.Image{image | grid: grid}
   end
 
+  @doc """
+    Mirrors rows.
+  """
   def mirror_row([fst, snd | _tail] = row) do
     row ++ [snd, fst]
   end
