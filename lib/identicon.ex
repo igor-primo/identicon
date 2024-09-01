@@ -30,9 +30,6 @@ defmodule Identicon do
     a list.
   """
   def hash_input input do
-    hex =  :crypto.hash(:md5, input)
-    |> :binary.bin_to_list
-
-    %Identicon.Image{hex: hex}
+    %Identicon.Image{hex: :crypto.hash(:md5, input) |> :binary.bin_to_list}
   end
 end
